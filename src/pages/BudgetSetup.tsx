@@ -8,12 +8,12 @@ import ChatBot from '@/components/ChatBot';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { ArrowRight, HelpCircle } from 'lucide-react';
+import { ArrowRight, HelpCircle, X } from 'lucide-react';
 
 const steps = [
   "Account Setup",
   "Upload Assets",
-  "Business Details",
+  "Business Details", 
   "Keyword Targeting",
   "Budget Setup",
   "Checkout"
@@ -42,7 +42,7 @@ const BudgetSetup = () => {
   }, [budget]);
 
   const handleBudgetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value);
+    const value = parseFloat(e.target.value.replace(/[^0-9.]/g, ''));
     if (!isNaN(value)) {
       // Enforce min/max constraints
       if (value < 500) {
@@ -53,6 +53,10 @@ const BudgetSetup = () => {
         setBudget(value);
       }
     }
+  };
+
+  const clearBudget = () => {
+    setBudget(500); // Reset to minimum budget
   };
 
   const handleNext = () => {
@@ -79,13 +83,18 @@ const BudgetSetup = () => {
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
                   <Input
                     id="budget"
-                    type="number"
-                    min={500}
-                    max={50000}
+                    type="text"
                     value={budget}
                     onChange={handleBudgetChange}
-                    className="pl-8"
+                    className="pl-8 pr-10"
                   />
+                  <button 
+                    onClick={clearBudget}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    aria-label="Clear budget"
+                  >
+                    <X size={20} />
+                  </button>
                 </div>
                 <div className="flex justify-between text-xs text-gray-500 mt-1">
                   <span>Min: $500</span>
