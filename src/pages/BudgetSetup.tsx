@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -5,10 +6,10 @@ import Footer from '@/components/Footer';
 import StepIndicator from '@/components/StepIndicator';
 import ChatBot from '@/components/ChatBot';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { ArrowRight, HelpCircle, X } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import BudgetInput from '@/components/budget/BudgetInput';
+import FeeCalculator from '@/components/budget/FeeCalculator';
+import WhyChooseUs from '@/components/budget/WhyChooseUs';
 
 const steps = [
   "Account Setup",
@@ -98,88 +99,20 @@ const BudgetSetup = () => {
             <h1 className="text-2xl font-bold mb-6">Budget Setup</h1>
             
             <div className="space-y-6">
-              <div>
-                <Label htmlFor="budget">Monthly Ad Budget</Label>
-                <p className="text-sm text-gray-600 mb-2">
-                  Choose how much you want to spend on your Google Ads each month.
-                </p>
-                <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                  <Input
-                    id="budget"
-                    type="text"
-                    value={inputValue}
-                    onChange={handleBudgetChange}
-                    onBlur={handleBudgetBlur}
-                    className="pl-8 pr-10"
-                  />
-                  <button 
-                    onClick={clearBudget}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                    aria-label="Clear budget"
-                  >
-                    <X size={20} />
-                  </button>
-                </div>
-                <div className="flex justify-between text-xs text-gray-500 mt-1">
-                  <span>Min: $500</span>
-                  <span>Max: $50,000</span>
-                </div>
-              </div>
+              <BudgetInput 
+                inputValue={inputValue}
+                handleBudgetChange={handleBudgetChange}
+                handleBudgetBlur={handleBudgetBlur}
+                clearBudget={clearBudget}
+              />
               
-              <div className="bg-gray-50 p-4 rounded-lg border">
-                <h3 className="font-medium mb-2">Fee Calculator</h3>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center">
-                      <span>Monthly Ad Budget</span>
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <HelpCircle size={16} className="text-gray-400 ml-1 cursor-help" />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>This is the amount you want to spend on Google Ads each month. Minimum $500, maximum $50,000.</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </div>
-                    <span>${budget.toFixed(2)}</span>
-                  </div>
-                  
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center">
-                      <span>Platform Fee</span>
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <HelpCircle size={16} className="text-gray-400 ml-1 cursor-help" />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>Our service fee is $24.99 for budgets up to $500, with an additional $5 for every $50 increment beyond that.</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </div>
-                    <span>${platformFee.toFixed(2)}</span>
-                  </div>
-                  
-                  <div className="border-t pt-2 mt-2 flex justify-between font-medium">
-                    <span>Total Monthly Cost</span>
-                    <span>${total.toFixed(2)}</span>
-                  </div>
-                </div>
-              </div>
+              <FeeCalculator 
+                budget={budget}
+                platformFee={platformFee}
+                total={total}
+              />
               
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                <h3 className="font-medium text-blue-800 mb-2">Why Choose Us?</h3>
-                <ul className="space-y-1 text-sm text-blue-800">
-                  <li>• Transparent pricing with no hidden costs</li>
-                  <li>• Expert campaign setup and optimization</li>
-                  <li>• No long-term contracts - cancel anytime</li>
-                </ul>
-              </div>
+              <WhyChooseUs />
 
               <div className="flex justify-between pt-4">
                 <Button variant="outline" onClick={() => navigate('/create/keywords')}>
