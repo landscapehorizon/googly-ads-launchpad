@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -8,6 +7,7 @@ import ChatBot from '@/components/ChatBot';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { ArrowRight, HelpCircle, X } from 'lucide-react';
 
 const steps = [
@@ -134,7 +134,16 @@ const BudgetSetup = () => {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center">
                       <span>Monthly Ad Budget</span>
-                      <HelpCircle size={16} className="text-gray-400 ml-1" />
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <HelpCircle size={16} className="text-gray-400 ml-1 cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>This is the amount you want to spend on Google Ads each month. Minimum $500, maximum $50,000.</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
                     <span>${budget.toFixed(2)}</span>
                   </div>
@@ -142,7 +151,16 @@ const BudgetSetup = () => {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center">
                       <span>Platform Fee</span>
-                      <HelpCircle size={16} className="text-gray-400 ml-1" />
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <HelpCircle size={16} className="text-gray-400 ml-1 cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Our service fee is $24.99 for budgets up to $500, with an additional $5 for every $50 increment beyond that.</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
                     <span>${platformFee.toFixed(2)}</span>
                   </div>
