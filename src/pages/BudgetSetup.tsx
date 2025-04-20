@@ -22,6 +22,7 @@ const steps = [
 const BudgetSetup = () => {
   const [currentStep, setCurrentStep] = useState(4);
   const [budget, setBudget] = useState<number>(1000);
+  const [inputValue, setInputValue] = useState<string>("1000");
   const [platformFee, setPlatformFee] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
   const navigate = useNavigate();
@@ -42,9 +43,17 @@ const BudgetSetup = () => {
   }, [budget]);
 
   const handleBudgetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value.replace(/[^0-9.]/g, ''));
+    const rawValue = e.target.value.replace(/[^0-9.]/g, '');
+    setInputValue(rawValue);
+    
+    if (rawValue === '') {
+      // Allow empty input
+      return;
+    }
+    
+    const value = parseFloat(rawValue);
     if (!isNaN(value)) {
-      // Enforce min/max constraints
+      // Only apply min/max constraints when confirming or when user is done typing
       if (value < 500) {
         setBudget(500);
       } else if (value > 50000) {
@@ -55,8 +64,23 @@ const BudgetSetup = () => {
     }
   };
 
+  const handleBudgetBlur = () => {
+    // Apply constraints when focus leaves the input
+    if (inputValue === '' || parseFloat(inputValue) < 500) {
+      setBudget(500);
+      setInputValue("500");
+    } else if (parseFloat(inputValue) > 50000) {
+      setBudget(50000);
+      setInputValue("50000");
+    } else {
+      setBudget(parseFloat(inputValue));
+      setInputValue(parseFloat(inputValue).toString());
+    }
+  };
+
   const clearBudget = () => {
-    setBudget(500); // Reset to minimum budget
+    setInputValue("");
+    // Don't update budget yet, wait for blur or new input
   };
 
   const handleNext = () => {
@@ -84,8 +108,9 @@ const BudgetSetup = () => {
                   <Input
                     id="budget"
                     type="text"
-                    value={budget}
+                    value={inputValue}
                     onChange={handleBudgetChange}
+                    onBlur={handleBudgetBlur}
                     className="pl-8 pr-10"
                   />
                   <button 
