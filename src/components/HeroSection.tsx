@@ -52,7 +52,7 @@ const HeroSection = () => {
                 <div className="flex-1 flex items-center justify-center">
                   <div className="text-center">
                     <div className="mx-auto w-16 h-16 mb-4 bg-googly-blue/20 rounded-full flex items-center justify-center">
-                      <span className="text-2xl font-bold text-googly-blue">G</span>
+                      <span className="text-2xl font-bold text-googly-blue">T</span>
                     </div>
                     <div className="h-2 w-32 mx-auto bg-gray-200 rounded-full"></div>
                     <div className="h-2 w-24 mx-auto bg-gray-200 rounded-full mt-2"></div>

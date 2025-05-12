@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-lg font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-googly-blue to-googly-purple">
-              iamgoogly.ai
+              twelvetribe.com
             </h3>
             <p className="text-sm text-gray-600 mb-4">
               Launch Google Ads in minutes. No ad manager. No guessing games. Just upload and go.
@@ -82,7 +82,7 @@ const Footer = () => {
         
         <div className="pt-8 border-t border-gray-200">
           <p className="text-sm text-gray-600 text-center">
-            © {new Date().getFullYear()} iamgoogly.ai. All rights reserved.
+            © {new Date().getFullYear()} Twelve Tribe. All rights reserved.
           </p>
         </div>
       </div>

@@ -12,7 +12,7 @@ const Header = () => {
       <div className="googly-container flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
           <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-googly-blue to-googly-purple">
-            iamgoogly.ai
+            Twelve Tribe
           </span>
         </Link>
 
