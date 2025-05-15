@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -118,8 +117,7 @@ const Dashboard = () => {
           <div className="bg-white rounded-lg p-6 max-w-md w-full m-4 animate-fade-in">
             <h2 className="text-xl font-bold mb-4">Verification Required</h2>
             <p className="text-gray-600 mb-4">
-              Google Ads requires a verification process before allowing advertising across their network. 
-              Please upload one of the following documents:
+              Please upload the following documents:
             </p>
             <ul className="mb-4 ml-5 list-disc text-gray-600">
               <li>W-9 form</li>
@@ -157,7 +155,7 @@ const Dashboard = () => {
                   className="w-full justify-center"
                   disabled={isUploading}
                 >
-                  {isUploading ? 'Uploading...' : 'Upload Document'}
+                  {isUploading ? 'Uploading...' : 'Upload Documents'}
                 </Button>
               </div>
             )}
