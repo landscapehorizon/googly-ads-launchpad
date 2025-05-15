@@ -56,7 +56,7 @@ const Dashboard = () => {
               <Menu size={24} />
             </button>
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-googly-blue to-googly-purple">
-              iamgoogly.ai
+              Twelve Tribe
             </span>
           </div>
           
@@ -124,6 +124,7 @@ const Dashboard = () => {
             <ul className="mb-4 ml-5 list-disc text-gray-600">
               <li>W-9 form</li>
               <li>IRS-issued document with business name, address, and EIN</li>
+              <li>Driver's License (front and back JPG images)</li>
             </ul>
             
             {selectedDocument ? (
