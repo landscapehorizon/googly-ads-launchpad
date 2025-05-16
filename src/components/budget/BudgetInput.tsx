@@ -1,24 +1,23 @@
 
 import React from 'react';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { X } from 'lucide-react';
+import { Slider } from '@/components/ui/slider';
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { HelpCircle } from 'lucide-react';
 
 interface BudgetInputProps {
-  inputValue: string;
-  handleBudgetChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleBudgetBlur: () => void;
-  clearBudget: () => void;
+  budget: number;
+  handleBudgetChange: (value: number[]) => void;
 }
 
 const BudgetInput: React.FC<BudgetInputProps> = ({
-  inputValue,
-  handleBudgetChange,
-  handleBudgetBlur,
-  clearBudget
+  budget,
+  handleBudgetChange
 }) => {
+  // Define budget steps for the slider
+  const minBudget = 500;
+  const maxBudget = 50000;
+  
   return (
     <div>
       <Label htmlFor="budget">Monthly Ad Budget</Label>
@@ -37,23 +36,21 @@ const BudgetInput: React.FC<BudgetInputProps> = ({
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div className="relative">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-        <Input
+      <div className="pt-2 pb-6">
+        <Slider 
           id="budget"
-          type="text"
-          value={inputValue}
-          onChange={handleBudgetChange}
-          onBlur={handleBudgetBlur}
-          className="pl-8 pr-10"
+          min={minBudget}
+          max={maxBudget}
+          step={50}
+          value={[budget]}
+          onValueChange={handleBudgetChange}
+          className="mt-6"
         />
-        <button 
-          onClick={clearBudget}
-          className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-          aria-label="Clear budget"
-        >
-          <X size={20} />
-        </button>
+      </div>
+      <div className="flex justify-between text-sm">
+        <div className="bg-white px-3 py-2 rounded-md shadow-sm border">
+          <span className="text-gray-500">Budget:</span> <span className="font-semibold">${budget.toLocaleString()}</span>
+        </div>
       </div>
       <div className="flex justify-between text-xs text-gray-500 mt-1">
         <span>Min: $500</span>

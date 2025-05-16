@@ -23,7 +23,6 @@ const steps = [
 const BudgetSetup = () => {
   const [currentStep, setCurrentStep] = useState(4);
   const [budget, setBudget] = useState<number>(1000);
-  const [inputValue, setInputValue] = useState<string>("1000");
   const [platformFee, setPlatformFee] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
   const navigate = useNavigate();
@@ -43,45 +42,9 @@ const BudgetSetup = () => {
     setTotal(budget + fee);
   }, [budget]);
 
-  const handleBudgetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const rawValue = e.target.value.replace(/[^0-9.]/g, '');
-    setInputValue(rawValue);
-    
-    if (rawValue === '') {
-      // Allow empty input
-      return;
-    }
-    
-    const value = parseFloat(rawValue);
-    if (!isNaN(value)) {
-      // Only apply min/max constraints when confirming or when user is done typing
-      if (value < 500) {
-        setBudget(500);
-      } else if (value > 50000) {
-        setBudget(50000);
-      } else {
-        setBudget(value);
-      }
-    }
-  };
-
-  const handleBudgetBlur = () => {
-    // Apply constraints when focus leaves the input
-    if (inputValue === '' || parseFloat(inputValue) < 500) {
-      setBudget(500);
-      setInputValue("500");
-    } else if (parseFloat(inputValue) > 50000) {
-      setBudget(50000);
-      setInputValue("50000");
-    } else {
-      setBudget(parseFloat(inputValue));
-      setInputValue(parseFloat(inputValue).toString());
-    }
-  };
-
-  const clearBudget = () => {
-    setInputValue("");
-    // Don't update budget yet, wait for blur or new input
+  const handleBudgetChange = (values: number[]) => {
+    const newBudget = values[0];
+    setBudget(newBudget);
   };
 
   const handleNext = () => {
@@ -100,10 +63,8 @@ const BudgetSetup = () => {
             
             <div className="space-y-6">
               <BudgetInput 
-                inputValue={inputValue}
+                budget={budget}
                 handleBudgetChange={handleBudgetChange}
-                handleBudgetBlur={handleBudgetBlur}
-                clearBudget={clearBudget}
               />
               
               <FeeCalculator 
