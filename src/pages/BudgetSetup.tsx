@@ -31,10 +31,10 @@ const BudgetSetup = () => {
   useEffect(() => {
     let fee = 24.99; // Base fee for $500 budget
     
-    // For every $100 increase after the minimum $500, add $5
+    // For every $50 increase after the minimum $500, add $5
     if (budget > 500) {
       const additionalBudget = budget - 500;
-      const additionalFee = Math.floor(additionalBudget / 100) * 5;
+      const additionalFee = Math.floor(additionalBudget / 50) * 5;
       fee += additionalFee;
     }
     

@@ -41,7 +41,7 @@ const FeeCalculator: React.FC<FeeCalculatorProps> = ({ budget, platformFee, tota
                   <HelpCircle size={16} className="text-gray-400 ml-1 cursor-help" />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Our service fee is $24.99 for budgets up to $500, with an additional $5 for every $100 increment beyond that.</p>
+                  <p>Our service fee is $24.99 for budgets up to $500, with an additional $5 for every $50 increment beyond that.</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
