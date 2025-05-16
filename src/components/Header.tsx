@@ -21,9 +21,6 @@ const Header = () => {
           <Link to="/" className="text-sm font-medium hover:text-googly-blue transition-colors">
             Home
           </Link>
-          <Link to="/how-it-works" className="text-sm font-medium hover:text-googly-blue transition-colors">
-            How It Works
-          </Link>
           <Link to="/pricing" className="text-sm font-medium hover:text-googly-blue transition-colors">
             Pricing
           </Link>
@@ -66,13 +63,6 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Home
-            </Link>
-            <Link
-              to="/how-it-works"
-              className="text-sm font-medium hover:text-googly-blue transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              How It Works
             </Link>
             <Link
               to="/pricing"
