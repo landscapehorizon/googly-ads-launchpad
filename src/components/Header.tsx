@@ -27,6 +27,9 @@ const Header = () => {
           <Link to="/pricing" className="text-sm font-medium hover:text-googly-blue transition-colors">
             Pricing
           </Link>
+          <Link to="/add-ons" className="text-sm font-medium hover:text-googly-blue transition-colors">
+            Add Ons
+          </Link>
           <Link to="/faq" className="text-sm font-medium hover:text-googly-blue transition-colors">
             FAQ
           </Link>
@@ -77,6 +80,13 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Pricing
+            </Link>
+            <Link
+              to="/add-ons"
+              className="text-sm font-medium hover:text-googly-blue transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Add Ons
             </Link>
             <Link
               to="/faq"

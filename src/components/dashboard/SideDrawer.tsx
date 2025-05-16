@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Button } from '@/components/ui/button';
-import { PieChart, Settings, Home, HelpCircle, LogOut } from 'lucide-react';
+import { PieChart, Settings, Home, HelpCircle, LogOut, TrendingUp } from 'lucide-react';
 
 interface SideDrawerProps {
   isOpen: boolean;
@@ -35,6 +35,14 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ isOpen, onClose }) => {
                   <Button variant="ghost" className="w-full justify-start" size="sm">
                     <PieChart className="mr-2 h-4 w-4" />
                     Campaigns
+                  </Button>
+                </Link>
+              </li>
+              <li>
+                <Link to="/pixel-perfect" onClick={onClose}>
+                  <Button variant="ghost" className="w-full justify-start" size="sm">
+                    <TrendingUp className="mr-2 h-4 w-4" />
+                    Pixel Perfect
                   </Button>
                 </Link>
               </li>

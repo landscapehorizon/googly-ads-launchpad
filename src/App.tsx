@@ -16,6 +16,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import HowItWorks from "./pages/HowItWorks";
+import AddOns from "./pages/AddOns";
+import PixelPerfect from "./pages/PixelPerfect";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +40,8 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/add-ons" element={<AddOns />} />
+          <Route path="/pixel-perfect" element={<PixelPerfect />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
