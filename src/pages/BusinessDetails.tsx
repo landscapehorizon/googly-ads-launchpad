@@ -26,6 +26,7 @@ const BusinessDetails = () => {
   const [description, setDescription] = useState('');
   const [website, setWebsite] = useState('');
   const [hoursOpen, setHoursOpen] = useState('');
+  const [businessAddress, setBusinessAddress] = useState('');
   const navigate = useNavigate();
 
   const handleNext = () => {
@@ -72,6 +73,20 @@ const BusinessDetails = () => {
                   value={website}
                   onChange={(e) => setWebsite(e.target.value)}
                 />
+              </div>
+              
+              <div>
+                <Label htmlFor="businessAddress">Business Address (if applicable)</Label>
+                <Textarea
+                  id="businessAddress"
+                  placeholder="Enter your business address (optional)"
+                  className="min-h-[80px]"
+                  value={businessAddress}
+                  onChange={(e) => setBusinessAddress(e.target.value)}
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  This information will appear in your Business Profile ads.
+                </p>
               </div>
               
               <div>
