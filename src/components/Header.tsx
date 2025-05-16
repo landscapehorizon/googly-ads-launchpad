@@ -30,9 +30,6 @@ const Header = () => {
           <Link to="/faq" className="text-sm font-medium hover:text-googly-blue transition-colors">
             FAQ
           </Link>
-          <Link to="/admin" className="text-sm font-medium hover:text-googly-blue transition-colors">
-            Admin
-          </Link>
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
@@ -87,13 +84,6 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               FAQ
-            </Link>
-            <Link
-              to="/admin"
-              className="text-sm font-medium hover:text-googly-blue transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Admin
             </Link>
             <div className="flex flex-col space-y-2 pt-2">
               <Link to="/login" onClick={() => setIsMenuOpen(false)}>
