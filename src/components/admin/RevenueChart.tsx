@@ -29,7 +29,7 @@ const RevenueChart = () => {
   // Chart configuration
   const chartConfig = {
     adBudget: {
-      label: "Monthly Ad Budgets",
+      label: "Customer Ad Budgets",
       color: "#9b87f5"
     },
     platformFees: {
@@ -54,7 +54,7 @@ const RevenueChart = () => {
                 <ChartTooltipContent>
                   {payload.map((p) => (
                     <div key={p.name}>
-                      <span>{p.name === "adBudget" ? "Ad Budget" : "Platform Fees"}</span>
+                      <span>{p.name === "adBudget" ? "Customer Ad Budget" : "Platform Fees"}</span>
                       <span>${Number(p.value).toLocaleString()}</span>
                     </div>
                   ))}
@@ -65,7 +65,7 @@ const RevenueChart = () => {
           }}
         />
         <Legend />
-        <Bar dataKey="adBudget" fill="var(--color-adBudget)" name="Monthly Ad Budgets" />
+        <Bar dataKey="adBudget" fill="var(--color-adBudget)" name="Customer Ad Budgets" />
         <Bar dataKey="platformFees" fill="var(--color-platformFees)" name="Platform Fees" />
       </BarChart>
     </ChartContainer>

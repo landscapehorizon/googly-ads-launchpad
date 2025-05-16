@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { DollarSign, Users, UserMinus, ChartBarIcon } from 'lucide-react';
+import { DollarSign, Users, UserMinus } from 'lucide-react';
 
 const AdminStats = () => {
   // This would typically fetch real data from an API
@@ -15,11 +15,11 @@ const AdminStats = () => {
       description: "vs. previous year"
     },
     {
-      title: "YTD Ad Budget",
+      title: "YTD Customer Ad Budgets",
       value: "$152,700",
       change: "+8.2%",
       trend: "increase",
-      icon: <ChartBarIcon className="h-5 w-5" />,
+      icon: <DollarSign className="h-5 w-5" />,
       description: "vs. previous year"
     },
     {

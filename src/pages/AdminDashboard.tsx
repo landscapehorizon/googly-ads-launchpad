@@ -20,7 +20,7 @@ const AdminDashboard = () => {
         <Card className="col-span-full md:col-span-2">
           <CardHeader>
             <CardTitle>Revenue Overview</CardTitle>
-            <CardDescription>Platform fees vs ad budgets (Year-to-Date)</CardDescription>
+            <CardDescription>Platform fees vs customer ad budgets (Year-to-Date)</CardDescription>
           </CardHeader>
           <CardContent>
             <RevenueChart />
@@ -47,7 +47,7 @@ const AdminDashboard = () => {
           <Card>
             <CardHeader>
               <CardTitle>Monthly Revenue Breakdown</CardTitle>
-              <CardDescription>Detailed view of platform fees and ad budgets by month</CardDescription>
+              <CardDescription>Detailed view of platform fees and customer ad budgets by month</CardDescription>
             </CardHeader>
             <CardContent>
               <RevenueDetailsTable view="monthly" />
@@ -97,7 +97,7 @@ const RevenueDetailsTable = ({ view }: { view: "monthly" | "quarterly" }) => {
         <thead>
           <tr className="border-b">
             <th className="text-left p-3">{view === "monthly" ? "Month" : "Quarter"}</th>
-            <th className="text-right p-3">Ad Budget</th>
+            <th className="text-right p-3">Customer Ad Budget</th>
             <th className="text-right p-3">Platform Fees</th>
             <th className="text-right p-3">Avg. Customers</th>
           </tr>
