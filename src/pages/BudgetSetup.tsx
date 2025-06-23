@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -6,7 +5,8 @@ import Footer from '@/components/Footer';
 import StepIndicator from '@/components/StepIndicator';
 import ChatBot from '@/components/ChatBot';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Check } from 'lucide-react';
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+import { ArrowRight, Check, Info } from 'lucide-react';
 
 const steps = [
   "Account Setup",
@@ -144,7 +144,19 @@ const BudgetSetup = () => {
                     <span>{selectedPkg.name}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Monthly Ad Budget</span>
+                    <div className="flex items-center">
+                      <span className="text-gray-600">Monthly Ad Budget</span>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info size={16} className="text-gray-400 ml-1 cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>This is the amount you'll spend monthly on advertising across the Google network.</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
                     <span>${selectedPkg.adBudget.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
