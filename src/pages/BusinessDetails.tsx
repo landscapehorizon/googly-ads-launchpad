@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -9,7 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { ArrowRight } from 'lucide-react';
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+import { ArrowRight, Info } from 'lucide-react';
 
 const steps = [
   "Account Setup",
@@ -55,7 +55,19 @@ const BusinessDetails = () => {
               </div>
               
               <div>
-                <Label htmlFor="description">What do you sell or promote?</Label>
+                <div className="flex items-center mb-2">
+                  <Label htmlFor="description">What do you sell or promote?</Label>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Info size={16} className="text-gray-400 ml-1 cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Google Ads does not permit advertising that includes illegal products or services, dangerous or dishonest behavior, inappropriate content, or violations of user privacy and data policies.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
                 <Textarea
                   id="description"
                   placeholder="Describe your products or services in a few sentences..."
