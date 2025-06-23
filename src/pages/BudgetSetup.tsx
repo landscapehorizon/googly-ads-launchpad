@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -152,7 +153,7 @@ const BudgetSetup = () => {
                             <Info size={16} className="text-gray-400 ml-1 cursor-help" />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>This is the amount you'll spend monthly on advertising across the Google network.</p>
+                            <p>This is the monthly amount you'll spend on advertising across the Google network.</p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
