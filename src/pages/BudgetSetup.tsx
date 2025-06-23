@@ -111,11 +111,11 @@ const BudgetSetup = () => {
                   <div className="text-center mb-6">
                     <h3 className="text-xl font-bold mb-2">{pkg.name}</h3>
                     <div className="mb-2">
-                      <span className="text-3xl font-bold">${pkg.total}</span>
+                      <span className="text-3xl font-bold">${pkg.platformFee}</span>
                       <span className="text-gray-500">/month</span>
                     </div>
                     <div className="text-sm text-gray-600">
-                      <div>${pkg.adBudget} ad spend + ${pkg.platformFee} platform fee</div>
+                      <div>+ ${pkg.adBudget} ad spend budget</div>
                     </div>
                   </div>
 
