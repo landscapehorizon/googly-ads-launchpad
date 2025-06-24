@@ -119,16 +119,6 @@ const DashboardContent: React.FC = () => {
         </div>
       </div>
       
-      {/* Promotional Banner */}
-      <div className="bg-gradient-to-r from-googly-blue to-googly-purple rounded-lg p-4 mb-8 text-white">
-        <div className="flex items-center">
-          <span className="text-3xl mr-2">🔥</span>
-          <p className="font-medium">
-            Save 10% on your second ad, 15% on your third, 20% on four or more!
-          </p>
-        </div>
-      </div>
-      
       {/* Dashboard Tabs */}
       <Tabs defaultValue="pending" className="mb-8">
         <TabsList className="mb-6">
