@@ -45,7 +45,19 @@ const BusinessDetails = () => {
             
             <div className="space-y-4">
               <div>
-                <Label htmlFor="brandName">Brand Name</Label>
+                <div className="flex items-center mb-2">
+                  <Label htmlFor="brandName">Brand Name</Label>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Info size={16} className="text-gray-400 ml-1 cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Google Ads requires that the business name used in your account matches the name on your official registration or filing documents, as part of their verification process.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
                 <Input
                   id="brandName"
                   placeholder="Your Business Name"
