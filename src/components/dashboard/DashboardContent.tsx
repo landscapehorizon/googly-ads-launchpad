@@ -101,24 +101,6 @@ const DashboardContent: React.FC = () => {
         </p>
       </div>
       
-      {/* Ready to Create Another Campaign Section */}
-      <div className="mb-8 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg border border-purple-200 p-6">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="mb-4 md:mb-0">
-            <h2 className="text-lg font-bold mb-2">Ready to Create Another Campaign?</h2>
-            <p className="text-gray-600">
-              Launch a new ad to reach even more potential customers.
-            </p>
-          </div>
-          <Link to="/create">
-            <Button className="bg-purple-600 hover:bg-purple-700">
-              <Plus size={16} className="mr-2" />
-              Launch New Ad
-            </Button>
-          </Link>
-        </div>
-      </div>
-      
       {/* Dashboard Tabs */}
       <Tabs defaultValue="pending" className="mb-8">
         <TabsList className="mb-6">
@@ -343,6 +325,24 @@ const DashboardContent: React.FC = () => {
           </div>
         </TabsContent>
       </Tabs>
+      
+      {/* Ready to Create Another Campaign Section - Moved to bottom */}
+      <div className="mb-8 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg border border-purple-200 p-6">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="mb-4 md:mb-0">
+            <h2 className="text-lg font-bold mb-2">Ready to Create Another Campaign?</h2>
+            <p className="text-gray-600">
+              Launch a new ad to reach even more potential customers.
+            </p>
+          </div>
+          <Link to="/create">
+            <Button className="bg-purple-600 hover:bg-purple-700">
+              <Plus size={16} className="mr-2" />
+              Launch New Ad
+            </Button>
+          </Link>
+        </div>
+      </div>
       
       {/* Confirmation Dialog */}
       <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
