@@ -6,8 +6,9 @@ import Footer from '@/components/Footer';
 import StepIndicator from '@/components/StepIndicator';
 import ChatBot from '@/components/ChatBot';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Upload, ArrowRight, X, Image, Film } from 'lucide-react';
+import { Upload, ArrowRight, X, Image, Youtube } from 'lucide-react';
 
 const steps = [
   "Account Setup",
@@ -21,7 +22,7 @@ const steps = [
 const UploadAssets = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
-  const [uploadedVideo, setUploadedVideo] = useState<string | null>(null);
+  const [youtubeLink, setYoutubeLink] = useState<string>('');
   const [uploadedLogo, setUploadedLogo] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -34,12 +35,6 @@ const UploadAssets = () => {
         }
       }
       setUploadedImages(newImages);
-    }
-  };
-
-  const handleVideoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setUploadedVideo(URL.createObjectURL(e.target.files[0]));
     }
   };
 
@@ -112,40 +107,28 @@ const UploadAssets = () => {
               </div>
               
               <div>
-                <Label className="text-lg">Video (optional)</Label>
+                <Label className="text-lg">YouTube Video (optional)</Label>
                 <p className="text-sm text-gray-600 mb-2">
-                  Upload a video to enhance your ads. Recommended length: 15-30 seconds.
+                  Provide a YouTube link to enhance your ads. Recommended length: 15-30 seconds.
                 </p>
                 
-                {uploadedVideo ? (
-                  <div className="relative aspect-video bg-gray-100 rounded-md overflow-hidden mb-2">
-                    <video
-                      src={uploadedVideo}
-                      controls
-                      className="w-full h-full object-cover"
-                    />
+                <div className="flex items-center space-x-2">
+                  <Youtube size={20} className="text-red-500" />
+                  <Input
+                    placeholder="https://www.youtube.com/watch?v=..."
+                    value={youtubeLink}
+                    onChange={(e) => setYoutubeLink(e.target.value)}
+                  />
+                  {youtubeLink && (
                     <Button
-                      variant="destructive"
+                      variant="outline"
                       size="icon"
-                      className="absolute top-2 right-2"
-                      onClick={() => setUploadedVideo(null)}
+                      onClick={() => setYoutubeLink('')}
                     >
                       <X size={16} />
                     </Button>
-                  </div>
-                ) : (
-                  <label className="block aspect-video bg-gray-100 rounded-md border-2 border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 mb-2">
-                    <Film size={32} className="text-gray-400 mb-2" />
-                    <span className="text-sm text-gray-500">Upload Video</span>
-                    <span className="text-xs text-gray-400">MP4, MOV, or AVI format</span>
-                    <input
-                      type="file"
-                      accept="video/*"
-                      className="hidden"
-                      onChange={handleVideoUpload}
-                    />
-                  </label>
-                )}
+                  )}
+                </div>
               </div>
               
               <div>
