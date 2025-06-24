@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Clock, Check, BarChart, Plus, TrendingUp } from 'lucide-react';
+import { Clock, Check, BarChart, Plus, TrendingUp, Eye, MousePointer, DollarSign, Target } from 'lucide-react';
 
 const DashboardContent: React.FC = () => {
   // Mock state to track if the user has subscribed to Pixel Perfect
@@ -80,14 +80,111 @@ const DashboardContent: React.FC = () => {
         </TabsContent>
         
         <TabsContent value="performance">
-          <div className="bg-white rounded-lg shadow-sm border p-6 text-center">
-            <div className="inline-flex mx-auto w-16 h-16 items-center justify-center bg-gray-100 text-gray-400 rounded-full mb-3">
-              <BarChart size={24} />
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-lg font-bold">Campaign Performance</h2>
+              <div className="text-sm text-gray-500">Last 30 days</div>
             </div>
-            <h3 className="font-medium mb-2">No Performance Data Yet</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Performance metrics will be available once your ads are live.
-            </p>
+            
+            {/* Key Metrics Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Impressions</CardTitle>
+                  <Eye className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">12,847</div>
+                  <p className="text-xs text-green-600">+15.3% from last month</p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Clicks</CardTitle>
+                  <MousePointer className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">486</div>
+                  <p className="text-xs text-green-600">+8.2% from last month</p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Click Rate</CardTitle>
+                  <Target className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">3.78%</div>
+                  <p className="text-xs text-gray-500">Industry avg: 2.1%</p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Total Spent</CardTitle>
+                  <DollarSign className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">$234.56</div>
+                  <p className="text-xs text-gray-500">of $300 budget</p>
+                </CardContent>
+              </Card>
+            </div>
+            
+            {/* Performance Summary */}
+            <div className="space-y-4">
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <h3 className="font-medium text-green-800 mb-2">🎯 Campaign Performance</h3>
+                <p className="text-sm text-green-700">
+                  Your ads are performing 79% better than industry average! Your click-through rate of 3.78% 
+                  is significantly higher than the typical 2.1% for your industry.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <h4 className="font-medium mb-2">Top Performing Keywords</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span>local restaurant delivery</span>
+                      <span className="text-green-600">4.2% CTR</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>best pizza near me</span>
+                      <span className="text-green-600">3.9% CTR</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>food delivery service</span>
+                      <span className="text-green-600">3.1% CTR</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <h4 className="font-medium mb-2">Daily Performance Trend</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span>Monday</span>
+                      <span>42 clicks</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Tuesday</span>
+                      <span>38 clicks</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Wednesday</span>
+                      <span>51 clicks</span>
+                    </div>
+                    <div className="flex justify-between text-green-600 font-medium">
+                      <span>Today</span>
+                      <span>47 clicks</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </TabsContent>
         
