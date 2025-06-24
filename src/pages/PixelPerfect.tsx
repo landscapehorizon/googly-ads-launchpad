@@ -72,7 +72,7 @@ const PixelPerfect = () => {
                 <p className="text-gray-600 mb-6">
                   Gain valuable insights into your advertising performance for less than $0.50 per day.
                 </p>
-                <Link to="/dashboard">
+                <Link to="/pixel-perfect/checkout">
                   <Button size="lg">
                     Subscribe Now
                   </Button>

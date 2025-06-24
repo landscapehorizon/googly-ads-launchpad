@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +16,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import AddOns from "./pages/AddOns";
 import PixelPerfect from "./pages/PixelPerfect";
+import PixelPerfectCheckout from "./pages/PixelPerfectCheckout";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +40,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
           <Route path="/add-ons" element={<AddOns />} />
           <Route path="/pixel-perfect" element={<PixelPerfect />} />
+          <Route path="/pixel-perfect/checkout" element={<PixelPerfectCheckout />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
