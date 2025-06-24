@@ -53,9 +53,6 @@ const Header = () => {
                 <Link to="/add-ons" className="w-full">Add Ons</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Link to="/pixel-perfect" className="w-full">Pixel Perfect</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
                 <Link to="/faq" className="w-full">FAQ</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
@@ -156,13 +153,6 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Admin Dashboard
-                </Link>
-                <Link
-                  to="/pixel-perfect"
-                  className="block text-sm hover:text-googly-blue"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Pixel Perfect
                 </Link>
                 <p className="text-xs font-medium text-gray-500 mt-2">Checkout Flow</p>
                 <Link

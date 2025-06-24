@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -6,13 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
-import { Clock, Check, BarChart, Plus, TrendingUp, Eye, MousePointer, DollarSign, Target, Calendar, MapPin } from 'lucide-react';
+import { Clock, Check, BarChart, Plus, Eye, MousePointer, DollarSign, Target, Calendar, MapPin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const DashboardContent: React.FC = () => {
-  // Mock state to track if the user has subscribed to Pixel Perfect
-  const [hasPixelSubscription] = useState(false);
-  
   // Mock published ads data
   const [publishedAds, setPublishedAds] = useState([
     {
@@ -105,6 +101,24 @@ const DashboardContent: React.FC = () => {
         </p>
       </div>
       
+      {/* Ready to Create Another Campaign Section */}
+      <div className="mb-8 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg border border-purple-200 p-6">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="mb-4 md:mb-0">
+            <h2 className="text-lg font-bold mb-2">Ready to Create Another Campaign?</h2>
+            <p className="text-gray-600">
+              Launch a new ad to reach even more potential customers.
+            </p>
+          </div>
+          <Link to="/create">
+            <Button className="bg-purple-600 hover:bg-purple-700">
+              <Plus size={16} className="mr-2" />
+              Launch New Ad
+            </Button>
+          </Link>
+        </div>
+      </div>
+      
       {/* Promotional Banner */}
       <div className="bg-gradient-to-r from-googly-blue to-googly-purple rounded-lg p-4 mb-8 text-white">
         <div className="flex items-center">
@@ -121,9 +135,6 @@ const DashboardContent: React.FC = () => {
           <TabsTrigger value="pending">Pending Ads</TabsTrigger>
           <TabsTrigger value="published">Published Ads</TabsTrigger>
           <TabsTrigger value="performance">Performance</TabsTrigger>
-          {hasPixelSubscription && (
-            <TabsTrigger value="pixel">Pixel Metrics</TabsTrigger>
-          )}
         </TabsList>
         
         <TabsContent value="pending">
@@ -341,58 +352,6 @@ const DashboardContent: React.FC = () => {
             </div>
           </div>
         </TabsContent>
-        
-        {hasPixelSubscription && (
-          <TabsContent value="pixel">
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-lg font-bold mb-4">Pixel Perfect Metrics</h2>
-              <p className="text-gray-600 mb-6">
-                Track how users interact with your website after clicking on your ads.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Visitors</CardTitle>
-                    <CardDescription>Last 30 days</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-3xl font-bold">0</p>
-                  </CardContent>
-                </Card>
-                
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Conversions</CardTitle>
-                    <CardDescription>Last 30 days</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-3xl font-bold">0</p>
-                  </CardContent>
-                </Card>
-                
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Conversion Rate</CardTitle>
-                    <CardDescription>Last 30 days</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-3xl font-bold">0%</p>
-                  </CardContent>
-                </Card>
-              </div>
-              
-              <div className="bg-gray-50 p-4 rounded-lg text-center">
-                <p className="text-gray-600 mb-2">
-                  No data available yet. Make sure your pixel is installed correctly.
-                </p>
-                <Button variant="outline" size="sm">
-                  Installation Guide
-                </Button>
-              </div>
-            </div>
-          </TabsContent>
-        )}
       </Tabs>
       
       {/* Confirmation Dialog */}
@@ -415,48 +374,6 @@ const DashboardContent: React.FC = () => {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-      
-      {/* Pixel Perfect Upsell (shown only if not subscribed) */}
-      {!hasPixelSubscription && (
-        <div className="mb-8 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg border border-purple-200 p-6">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-4 md:mb-0">
-              <h2 className="text-lg font-bold mb-2">Upgrade to Pixel Perfect</h2>
-              <p className="text-gray-600">
-                Track how users interact with your website after clicking on your ads.
-                Get detailed metrics and improve your ad performance.
-              </p>
-              <p className="font-medium text-purple-600 mt-2">
-                Only $14.99 per month
-              </p>
-            </div>
-            <Link to="/pixel-perfect">
-              <Button className="bg-purple-600 hover:bg-purple-700">
-                <TrendingUp size={16} className="mr-2" />
-                Learn More
-              </Button>
-            </Link>
-          </div>
-        </div>
-      )}
-      
-      {/* Launch New Ad Button */}
-      <div className="bg-white rounded-lg shadow-sm border p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-lg font-bold mb-1">Ready to Create Another Campaign?</h2>
-            <p className="text-gray-600">
-              Launch a new ad to reach even more potential customers.
-            </p>
-          </div>
-          <Link to="/create">
-            <Button className="ml-4">
-              <Plus size={16} className="mr-2" />
-              Launch New Ad
-            </Button>
-          </Link>
-        </div>
-      </div>
     </div>
   );
 };
