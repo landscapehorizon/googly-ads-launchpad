@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -335,7 +336,7 @@ const DashboardContent: React.FC = () => {
               Launch a new ad to reach even more potential customers.
             </p>
           </div>
-          <Link to="/create">
+          <Link to="/create/budget">
             <Button className="bg-purple-600 hover:bg-purple-700">
               <Plus size={16} className="mr-2" />
               Launch New Ad
