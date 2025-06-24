@@ -1,10 +1,12 @@
 
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
+import { Checkbox } from '@/components/ui/checkbox';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Clock, Check, BarChart, Plus, Eye, MousePointer, DollarSign, Target, Calendar, MapPin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -55,6 +57,7 @@ const DashboardContent: React.FC = () => {
 
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [adToToggle, setAdToToggle] = useState<number | null>(null);
+  const [immediateShutoff, setImmediateShutoff] = useState(false);
   const { toast } = useToast();
 
   const handleToggleAd = (adId: number, currentStatus: boolean) => {
@@ -83,13 +86,19 @@ const DashboardContent: React.FC = () => {
           ? { ...ad, isActive: false, status: 'paused' }
           : ad
       ));
+      
+      const shutoffMessage = immediateShutoff 
+        ? "Your ad has been immediately paused and is no longer appearing across the Google network."
+        : "Your ad will continue running through the remainder of your payment cycle, then automatically turn off.";
+      
       toast({
         title: "Ad Paused",
-        description: "Your ad has been paused and is no longer appearing across the Google network.",
+        description: shutoffMessage,
       });
     }
     setShowConfirmDialog(false);
     setAdToToggle(null);
+    setImmediateShutoff(false);
   };
 
   return (
@@ -355,8 +364,31 @@ const DashboardContent: React.FC = () => {
               You can turn it back on anytime.
             </AlertDialogDescription>
           </AlertDialogHeader>
+          
+          <div className="flex items-start space-x-2 py-4">
+            <Checkbox 
+              id="immediate-shutoff" 
+              checked={immediateShutoff}
+              onCheckedChange={(checked) => setImmediateShutoff(checked as boolean)}
+            />
+            <div className="grid gap-1.5 leading-none">
+              <label
+                htmlFor="immediate-shutoff"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+              >
+                Immediate shutdown
+              </label>
+              <p className="text-xs text-muted-foreground">
+                When checkbox is enabled, this ad will immediately shut off. When left unchecked, the ad will run through the remainder of your payment cycle before turning off.
+              </p>
+            </div>
+          </div>
+          
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setShowConfirmDialog(false)}>
+            <AlertDialogCancel onClick={() => {
+              setShowConfirmDialog(false);
+              setImmediateShutoff(false);
+            }}>
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction onClick={confirmToggleOff}>
@@ -370,3 +402,4 @@ const DashboardContent: React.FC = () => {
 };
 
 export default DashboardContent;
+
