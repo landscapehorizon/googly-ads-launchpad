@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound";
 import AddOns from "./pages/AddOns";
 import PixelPerfect from "./pages/PixelPerfect";
 import PixelPerfectCheckout from "./pages/PixelPerfectCheckout";
+import TermsOfService from "./pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/add-ons" element={<AddOns />} />
           <Route path="/pixel-perfect" element={<PixelPerfect />} />
           <Route path="/pixel-perfect/checkout" element={<PixelPerfectCheckout />} />
+          <Route path="/terms" element={<TermsOfService />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
