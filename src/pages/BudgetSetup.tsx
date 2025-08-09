@@ -23,8 +23,8 @@ const subscriptionPackages = [
     id: 'basic',
     name: 'Ad Basic',
     adBudget: 500,
-    platformFee: 99.99,
-    total: 599.99,
+    platformFee: 49.99,
+    total: 549.99,
     features: [
       '$500 monthly ad spend',
       'Basic campaign optimization',
@@ -36,8 +36,8 @@ const subscriptionPackages = [
     id: 'plus',
     name: 'Ad Plus',
     adBudget: 1500,
-    platformFee: 199.99,
-    total: 1699.99,
+    platformFee: 89.99,
+    total: 1589.99,
     popular: true,
     features: [
       '$1,500 monthly ad spend',
@@ -51,8 +51,8 @@ const subscriptionPackages = [
     id: 'enterprise',
     name: 'Enterprise',
     adBudget: 3000,
-    platformFee: 399.99,
-    total: 3399.99,
+    platformFee: 149.99,
+    total: 3149.99,
     features: [
       '$3,000 monthly ad spend',
       'Premium campaign optimization',
