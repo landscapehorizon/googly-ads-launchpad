@@ -170,7 +170,7 @@ const BudgetSetup = () => {
                   </div>
                 </div>
                 <p className="text-xs text-gray-500 mt-4">
-                  No long-term commitments. You can cancel anytime from your dashboard. Your subscription will begin today and you'll be charged monthly.
+                  No long-term commitments. You can cancel anytime from your dashboard. Your subscription will begin today and you'll be charged monthly. All advertisers must complete Google's required verification before campaigns can launch. You'll upload your documents immediately after checkout—it takes just a few minutes.
                 </p>
               </div>
             )}
