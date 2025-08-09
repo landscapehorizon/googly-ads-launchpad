@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const TermsOfService = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background py-12 px-4">
       <div className="max-w-4xl mx-auto">
@@ -126,6 +131,18 @@ const TermsOfService = () => {
             </div>
           </CardContent>
         </Card>
+        
+        {/* Back Navigation */}
+        <div className="flex justify-center mt-8">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft size={16} />
+            Back to Previous Page
+          </Button>
+        </div>
       </div>
     </div>
   );
