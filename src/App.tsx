@@ -19,6 +19,7 @@ import PixelPerfect from "./pages/PixelPerfect";
 import PixelPerfectCheckout from "./pages/PixelPerfectCheckout";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/pixel-perfect/checkout" element={<PixelPerfectCheckout />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/cookies" element={<CookiePolicy />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
