@@ -155,6 +155,20 @@ const DashboardContent: React.FC = () => {
               </div>
             </div>
             
+            {/* Promotional Banner - Show after first ad is published */}
+            {publishedAds.length > 0 && (
+              <div className="mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4">
+                <div className="flex items-center justify-center">
+                  <div className="text-center">
+                    <h3 className="text-sm font-semibold text-blue-800 mb-1">🎉 Special Promotion</h3>
+                    <p className="text-sm text-blue-700">
+                      Launch 5 active ads and get your 5th free!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+            
             <div className="space-y-4">
               {publishedAds.map((ad) => (
                 <Card key={ad.id} className="border-l-4 border-l-blue-500">
